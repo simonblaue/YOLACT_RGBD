@@ -6,14 +6,14 @@ from yolact_pkg.data.config import resnet101_rgbd_bakcbone_one_layer
     
 dataset = Config({
     'name': 'Base Dataset',
-    # Training images
-    'train_images': '/media/hdd7/sblaue/temp_coco/train/',
+    # Training folder 
+    'train_images': '/Users/simonblaue/Desktop/YOLACT_RGBD/datasets/heat allocators/train/',
     # Train annotaions json file
-    'train_info':   '/media/hdd7/sblaue/temp_coco/train/annotations.json',
-    # Validation images
-    'valid_images': '/media/hdd7/sblaue/temp_coco/val/',
+    'train_info':   '/Users/simonblaue/Desktop/YOLACT_RGBD/datasets/heat allocators/train/annotations.json',
+    # Validation folder
+    'valid_images': '/Users/simonblaue/Desktop/YOLACT_RGBD/datasets/heat allocators/val/',
     # Validation annotaions json file
-    'valid_info':   '/media/hdd7/sblaue/temp_coco/val/annotations.json',
+    'valid_info':   '/Users/simonblaue/Desktop/YOLACT_RGBD/datasets/heat allocators/val/annotations.json',
     # Whether or not to load GT. If this is False, eval.py quantitative evaluation won't work.
     'has_gt': True,
     # A list of names for each of you classes.
