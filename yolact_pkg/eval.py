@@ -139,7 +139,7 @@ color_cache = defaultdict(lambda: {})
 
 def infer(net, img, override_args:Config=None):
     if isinstance(img, str):
-        img = cv2.imread(img)
+        img = cv2.imread(img, cv2.IMREAD_UNCHANGED)
     
     args = parse_args()
     if override_args is not None:
@@ -151,7 +151,7 @@ def infer(net, img, override_args:Config=None):
             frame = torch.from_numpy(img).cuda().float()
         else:
             frame = torch.from_numpy(np.array(img)).cpu().float()
-        batch = FastBaseTransform(args.cuda)(frame.unsqueeze(0))
+        batch = FastBaseTransform(cfg.MEANS, cfg.STD, args.cuda)(frame.unsqueeze(0))
         dets_out = net(batch)
     
     h, w, _ = img.shape
@@ -198,10 +198,14 @@ def annotate_img(img, classes, scores, boxes, masks, class_color=False, mask_alp
         #override the command line args by the given arguments (type Config)
         args = override_args
 
+    h, w, d = img.shape
+    if d>3:
+        img = img[:,:,:3]
     img_gpu = img / 255.0
-    h, w, _ = img.shape
+
     
     undo_transform = False
+    print(args)
     num_dets_to_consider = min(args.top_k, classes.shape[0])
     for j in range(num_dets_to_consider):
         if scores[j] < args.score_threshold:

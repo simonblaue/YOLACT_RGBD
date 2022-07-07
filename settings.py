@@ -32,7 +32,7 @@ config_override = {
     # Image Size
     'max_size': 512,
     
-    'save_path': '/Users/simonblaue/Desktop/YOLACT_RGBD/weights/resnet101_reducedfc.pth',
+    'save_path': '/Users/simonblaue/Desktop/YOLACT_RGBD/weights/',
     
     # we can override args used in eval.py:        
     'score_threshold': 0.1,
@@ -57,3 +57,19 @@ training_args_override = {
     "batch_size": 8,
     "save_interval": -1, # -1 for saving only at end of the epoch
 }
+
+# we can override inference args here
+override_eval_config = Config({
+        'cuda' : False,
+        'top_k': 10,
+        'score_threshold': 0.1,
+        'display_masks': True,
+        'display_fps' : False,
+        'display_text': False,
+        'display_bboxes': False,
+        'display_scores': True,
+        'save_path': '/Users/simonblaue/Desktop/YOLACT_RGBD/weights/',
+        'MEANS': (116.24457136111748,119.55194544312776,117.05760736644808,196.36951043344453),
+        'STD': (1.4380884974626822,1.8110670756137501,1.5662493838264602,1.8686978397590024),
+        
+    })

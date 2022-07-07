@@ -125,7 +125,7 @@ dataset_base = Config({
 
     # In BGR for Image net
     'MEANS' : (103.94, 116.78, 123.68),
-    'STD' : (57.38, 57.12, 58.40)
+    'STD' : (57.38, 57.12, 58.40),
 })
 
 coco2014_dataset = dataset_base.copy({
@@ -676,6 +676,7 @@ coco_base_config = Config({
     'maskious_to_train': -1,
     
     'save_path': 'weights/',
+    'load_strict':False,
 })
 
 

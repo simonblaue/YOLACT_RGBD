@@ -653,10 +653,14 @@ class FastBaseTransform(torch.nn.Module):
         elif self.transform.to_float:
             img = img / 255
         
-        if self.transform.channel_order != 'RGB':
+        if self.transform.channel_order == 'RGB':
+            img = img[:, (2, 1, 0), :, :].contiguous()
+        if self.transform.channel_order == 'RGBD':
+            img = img
+        else:
             raise NotImplementedError
         
-        img = img[:, (2, 1, 0), :, :].contiguous()
+        
 
         # Return value is in channel order [n, c, h, w] and RGB
         return img
