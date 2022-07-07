@@ -5,6 +5,8 @@ This is an extension from YOLACT https://github.com/dbolya/yolact.git to include
 ## Get started
 First download this repo, then install the yolact package from this in your pytorch with cuda environment. To set up such an envirement install the dependencies with the requirements file and an according cuda version.
 
+      pip install -r requirements.txt
+
 To install the yolact package, run:
 
       cd yolact_pkg
