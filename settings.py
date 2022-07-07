@@ -32,7 +32,7 @@ config_override = {
     # Image Size
     'max_size': 512,
     
-    'save_path': '/media/hdd7/sblaue/weights/',
+    'save_path': '/Users/simonblaue/Desktop/YOLACT_RGBD/weights/resnet101_reducedfc.pth',
     
     # we can override args used in eval.py:        
     'score_threshold': 0.1,

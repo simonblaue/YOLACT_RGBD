@@ -1,3 +1,4 @@
 .DS_Store
 /models
 weights/resnet101_reducedfc.pth
+datasets/
