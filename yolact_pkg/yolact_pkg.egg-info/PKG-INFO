@@ -5,14 +5,11 @@ Summary: YOLACT a real-time instance segmentation
 Home-page: https://github.com/dbolya/yolact
 Author: Daniel Bolya
 Author-email: author@example.com
-License: UNKNOWN
-Platform: UNKNOWN
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
 Requires-Python: >=3.6
 Description-Content-Type: text/markdown
-License-File: LICENSE
 
 
 # YOLACT fork with API, Tensorboard and more...
@@ -308,5 +305,3 @@ For YOLACT++, please cite
 
 # Contact
 For questions about our paper or code, please contact [Daniel Bolya](mailto:dbolya@ucdavis.edu).
-
-
