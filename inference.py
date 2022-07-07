@@ -37,16 +37,13 @@ if __name__ == '__main__':
     for i in range(5):
         img_path = random.choice(train_images)
         img = cv2.imread(img_path, cv2.IMREAD_UNCHANGED)[:,:,:]
-        img_old = img
+        
         frame, classes, scores, boxes, masks = yolact.infer(img_path)
-
-        header = img_path.replace(img_path, '').replace('.png','').replace('PNGImages/','')
-
         annotated_img = annotate_img(frame, classes, scores, boxes, masks, override_args=override_eval_config)
 
         img = np.hstack((annotated_img,img[:,:,:3]))
         cv2.namedWindow('test', cv2.WINDOW_NORMAL)
-        cv2.imshow(header,img)
+        cv2.imshow('test',img)
         
         cv2.waitKey(0)
         cv2.destroyAllWindows()
