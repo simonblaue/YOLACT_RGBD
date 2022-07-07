@@ -18,9 +18,7 @@ For datasets or pre trained models send me a message.
 
 ## How to use
 
-### Options to change
-
-#### For train.py
+### Options to change in settings.py
 
 In the dataset Config options change:
    - train_images path
@@ -32,7 +30,6 @@ In config_override change:
    -  save_path to the weights folder in this repo
    -  backbone, MEANS, STD and augment_photometric_distort if you wan to train in RGB
 
-#### For inference.py
 
 ## Labelme for dataset creation
  
