@@ -7,8 +7,8 @@ from settings import *
 
 ## IMPORTATNT !! ##
 
-#   To train yolact you need cuda and pytorch installed
 # 
+#   To train yolact you need cuda and pytorch installed. See requirements.txt!
 # 
 
 if __name__ == '__main__':
