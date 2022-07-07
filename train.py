@@ -1,6 +1,3 @@
-# to install the yolact package, run:
-# cd yolact_pkg
-# python -m pip install -e .
 from yolact_pkg.yolact import Yolact
 from yolact_pkg.train import train
 from settings import *
