@@ -38,8 +38,8 @@ if __name__ == '__main__':
     yolact.eval()
 
     # Reloade pretrained model
-    weights = 'training_2022-06-06-RGBD_final/yolact_base_118_1309.pth'
-    yolact.load_weights(override_eval_config.save_path + weights)
+    model_weights = '/Users/simonblaue/Desktop/YOLACT_RGBD/models/RGBD.pth'
+    yolact.load_weights(model_weights)
 
     # If you want to get images from a camera stream make sure they are 4 channels with Depth renormalized to 1..255 (no zeros)
     train_images = list(glob.iglob(dataset.train_images + '**/PNGImages/**.png', recursive=True))

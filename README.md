@@ -15,7 +15,7 @@ To install the yolact package, run:
 
 
 ## Models and Datasets
-If you want to retrain the RGBD model you need the pretrained backbone weights from resnet1010 found <a href='https://drive.google.com/file/d/1tvqFPd4bJtakOlmn-uIA492g2qurRChj/view'>here </a>. This file has to be put in ./weights in this repo.
+If you want to re train the RGBD model you need the pretrained backbone weights from resnet1010 found <a href='https://drive.google.com/file/d/1tvqFPd4bJtakOlmn-uIA492g2qurRChj/view'>here </a>. This file has to be put in ./weights in this repo.
 
 For datasets or pre trained models send me a message.
 
