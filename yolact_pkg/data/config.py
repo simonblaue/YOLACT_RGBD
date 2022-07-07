@@ -1,4 +1,4 @@
-from backbone import ResNetBackbone, ResNetBackboneMoreInputLayers, ResNetBackboneRGBD, ResNetBackboneRGBDNoPretrain, ResNetBackboneZeroLayer, VGGBackbone, ResNetBackboneGN, DarkNetBackbone
+from backbone import ResNetBackbone, ResNetBackboneRGBDThreeInputLayers, ResNetBackboneRGBD, ResNetBackboneRGBD_one_layer, VGGBackbone, ResNetBackboneGN, DarkNetBackbone
 from math import sqrt
 import torch
 
@@ -192,19 +192,6 @@ resnetRGBD_transform = Config({
     'to_float': False,
 })
 
-resnetZeroLayer_transform = Config({
-    'channel_order': 'RGB',
-    'normalize': True,
-    'subtract_means': False,
-    'to_float': False,
-})
-
-resnet_more_input_layers_transform = Config({
-    'channel_order': 'RGBD',
-    'normalize': True,
-    'subtract_means': False,
-    'to_float': False,
-})
 
 vgg_transform = Config({
     # Note that though vgg is traditionally BGR,
@@ -256,32 +243,28 @@ resnet101_backbone = backbone_base.copy({
     'pred_aspect_ratios': [ [[0.66685089, 1.7073535, 0.87508774, 1.16524493, 0.49059086]] ] * 6,
 })
 
-#SIMON###
-
+#RGBD Options###
 resnet101_rgbd_backbone = resnet101_backbone.copy({
     'name': 'ResNet101_RGBD',
     'transform': resnetRGBD_transform,
     'type': ResNetBackboneRGBD
 })
 
-resnet101_rgbd_bakcbone_no_pretain = resnet101_rgbd_backbone.copy({
-    'name': 'ResNet101_RGBD_No_Pretain',
+resnet101_rgbd_bakcbone_one_layer = resnet101_rgbd_backbone.copy({
+    'name': 'ResNet101_RGBD_one_layer',
     'transform': resnetRGBD_transform,
-    'type': ResNetBackboneRGBDNoPretrain
+    'type': ResNetBackboneRGBD_one_layer
 })
 
-resnet101_zero_layer_backbone = resnet101_backbone.copy({
-    'name': 'ResNet101_ZeroLayer',
-    'transform': resnetZeroLayer_transform,
-    'type': ResNetBackboneZeroLayer
-})
 
-resnet101_more_input_layers_backbone = resnet101_backbone.copy({
-    'name': 'ResNet101_More_Input_Layers',
-    'transform': resnet_more_input_layers_transform,
-    'type': ResNetBackboneMoreInputLayers
+
+resnet101_three_input_layers_backbone = resnet101_backbone.copy({
+    'name': 'ResNet101_three_Input_Layers',
+    'transform': resnetRGBD_transform,
+    'type': ResNetBackboneRGBDThreeInputLayers
 })
 #####
+
 resnet101_gn_backbone = backbone_base.copy({
     'name': 'ResNet101_GN',
     'path': 'R-101-GN.pkl',

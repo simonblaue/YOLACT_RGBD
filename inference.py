@@ -46,20 +46,19 @@ if __name__ == '__main__':
     val_images = list(glob.iglob(dataset.val_images + '**/PNGImages/**.png', recursive=True))
 
    
-    for i in range(10):
+    for i in range(5):
         img_path = random.choice(train_images)
         img = cv2.imread(img_path, cv2.IMREAD_UNCHANGED)[:,:,:3]
         img_old = img
         frame, classes, scores, boxes, masks = yolact.infer(img_path)
 
-        header = img_path.replace(PATH, '').replace('.png','').replace('PNGImages/','')
+        header = img_path.replace(img_path, '').replace('.png','').replace('PNGImages/','')
 
         annotated_img = annotate_img(frame, classes, scores, boxes, masks, override_args=override_eval_config)
 
         img = np.hstack((annotated_img,img))
         cv2.namedWindow(header, cv2.WINDOW_NORMAL)
         cv2.imshow(header,img)
-        #cv2.imwrite("/Users/simonblaue/ownCloud/Bachelorarbeit/Figures/yolact/RGBD/unknown devices/" +device+".RGB"+str(number)+".png", img )
-
+        
         cv2.waitKey(0)
         cv2.destroyAllWindows()
