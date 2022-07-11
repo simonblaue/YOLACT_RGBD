@@ -35,7 +35,7 @@ if __name__ == '__main__':
 
    
     for i in range(5):
-        img_path = random.choice(train_images)
+        img_path = random.choice(val_images)
         img = cv2.imread(img_path, cv2.IMREAD_UNCHANGED)[:,:,:]
         
         frame, classes, scores, boxes, masks = yolact.infer(img_path)

@@ -3,19 +3,20 @@
 This is an extension from YOLACT https://github.com/dbolya/yolact.git to include depth data in the model.
 
 ## Get started
-First download this repo, then install the yolact package from this in your pytorch with cuda environment. To set up such an envirement install the dependencies with the requirements file and an according cuda version.
-
-      pip install -r requirements.txt
+First download this repo, then install the yolact package from this in your pytorch with cuda environment. For creating such an environment look at environment.yaml in the yolact_pkg folder. 
 
 To install the yolact package, run:
 
       cd yolact_pkg
       python -m pip install -e .
 
+Then install further dependencies with the requirements file.
 
+      cd ../
+      pip install -r requirements.txt
 
 ## Models and Datasets
-If you want to re train the RGBD model you need the pretrained backbone weights from resnet1010 found <a href='https://drive.google.com/file/d/1tvqFPd4bJtakOlmn-uIA492g2qurRChj/view'>here </a>. This file has to be put in ./weights in this repo.
+If you want to re train the RGBD model you need the pretrained backbone weights from resnet101 found <a href='https://drive.google.com/file/d/1tvqFPd4bJtakOlmn-uIA492g2qurRChj/view'>here </a>. This file has to be put in ./weights in this repo.
 
 For datasets or pre trained models send me a message.
 
