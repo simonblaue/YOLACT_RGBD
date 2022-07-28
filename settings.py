@@ -65,7 +65,7 @@ override_eval_config = Config({
         'score_threshold': 0.1,
         'display_masks': True,
         'display_fps' : False,
-        'display_text': False,
+        'display_text': True,
         'display_bboxes': False,
         'display_scores': True,
         'save_path': '/Users/simonblaue/Desktop/YOLACT_RGBD/weights/',
