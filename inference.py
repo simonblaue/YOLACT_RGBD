@@ -4,8 +4,8 @@
 from yolact_pkg.data.config import Config
 from yolact_pkg.yolact import Yolact
 from yolact_pkg.eval import annotate_img
-# from settings import * for RGBD
-from settingsRGB import * #for RGB
+from settings import * #for RGBD
+#from settingsRGB import * #for RGB
 
 import cv2
 import numpy as np
@@ -27,8 +27,8 @@ if __name__ == '__main__':
     yolact.eval()
 
     # Reloade pretrained model
-    # model_weights = '/Users/simonblaue/Desktop/YOLACT_RGBD/models/RGBD/yolact_base_118_1309.pth' #RGBD
-    model_weights = '/Users/simonblaue/Desktop/YOLACT_RGBD/models/RGB/yolact_base_113_1254.pth' #RGB
+    model_weights = '/Users/simonblaue/Desktop/YOLACT_RGBD/models/RGBD/yolact_base_118_1309.pth' #RGBD
+    #model_weights = '/Users/simonblaue/Desktop/YOLACT_RGBD/models/RGB/yolact_base_113_1254.pth' #RGB
     yolact.load_weights(model_weights)
 
     # If you want to get images from a camera stream make sure they are 4 channels with Depth renormalized to 1..255 (no zeros)
@@ -42,8 +42,8 @@ if __name__ == '__main__':
     save_inference_vals = '/Users/simonblaue/ownCloud/Bachelorarbeit/Figures/yolact/RGBD/val_inference/'
     save_inference_train = '/Users/simonblaue/ownCloud/Bachelorarbeit/Figures/yolact/RGBD/train_inference/'
     # for RGB
-    save_inference_vals = '/Users/simonblaue/ownCloud/Bachelorarbeit/Figures/yolact/RGB/val_inference/'
-    save_inference_train = '/Users/simonblaue/ownCloud/Bachelorarbeit/Figures/yolact/RGB/train_inference/'
+    # save_inference_vals = '/Users/simonblaue/ownCloud/Bachelorarbeit/Figures/yolact/RGB/val_inference/'
+    # save_inference_train = '/Users/simonblaue/ownCloud/Bachelorarbeit/Figures/yolact/RGB/train_inference/'
 
     print(f"Found {len(train_images)} train images and {len(val_images)} validation images.")
     if image_name == None:
