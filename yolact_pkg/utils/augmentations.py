@@ -632,6 +632,9 @@ class FastBaseTransform(torch.nn.Module):
         self.transform = cfg.backbone.transform
 
     def forward(self, img):
+        if self.transform.channel_order == 'RGB':
+            img = img[:,:,:,:3]
+
         self.mean = self.mean.to(img.device)
         self.std  = self.std.to(img.device)
         
@@ -654,8 +657,10 @@ class FastBaseTransform(torch.nn.Module):
             img = img / 255
         
         if self.transform.channel_order == 'RGB':
+            img = img
+        elif self.transform.channel_order == 'BGR':
             img = img[:, (2, 1, 0), :, :].contiguous()
-        if self.transform.channel_order == 'RGBD':
+        elif self.transform.channel_order == 'RGBD':
             img = img
         else:
             raise NotImplementedError

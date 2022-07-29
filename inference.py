@@ -4,7 +4,8 @@
 from yolact_pkg.data.config import Config
 from yolact_pkg.yolact import Yolact
 from yolact_pkg.eval import annotate_img
-from settings import *
+# from settings import * for RGBD
+from settingsRGB import * #for RGB
 
 import cv2
 import numpy as np
@@ -19,7 +20,7 @@ if __name__ == '__main__':
     yolact = Yolact(config_override)
     
  ###########################################
- #  Inference on Mac                     #
+ #  Inference                         #
 ###########################################
 
     # Setting net in eval mode (train=False)
@@ -40,16 +41,21 @@ if __name__ == '__main__':
     image_name = 'save_all' # uncomment to save inference for all train and val images
     save_inference_vals = '/Users/simonblaue/ownCloud/Bachelorarbeit/Figures/yolact/RGBD/val_inference/'
     save_inference_train = '/Users/simonblaue/ownCloud/Bachelorarbeit/Figures/yolact/RGBD/train_inference/'
+    # for RGB
+    save_inference_vals = '/Users/simonblaue/ownCloud/Bachelorarbeit/Figures/yolact/RGB/val_inference/'
+    save_inference_train = '/Users/simonblaue/ownCloud/Bachelorarbeit/Figures/yolact/RGB/train_inference/'
 
-    print(f"Found {len(train_images)} train images and {len(val_images)}.")
+    print(f"Found {len(train_images)} train images and {len(val_images)} validation images.")
     if image_name == None:
-        for i in range(5):
+        for i in range(2):
             img_path = random.choice(val_images)
             img = cv2.imread(img_path, cv2.IMREAD_UNCHANGED)[:,:,:]
             
             frame, classes, scores, boxes, masks = yolact.infer(img_path)
             annotated_img = annotate_img(frame, classes, scores, boxes, masks, override_args=override_eval_config)
 
+            annotated_img = cv2.cvtColor(annotated_img,cv2.COLOR_BGR2RGB)
+            img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
             img = np.hstack((annotated_img,img[:,:,:3]))
             cv2.namedWindow('test', cv2.WINDOW_NORMAL)
             cv2.imshow('test',img)
@@ -64,6 +70,8 @@ if __name__ == '__main__':
             frame, classes, scores, boxes, masks = yolact.infer(img_path)
             annotated_img = annotate_img(frame, classes, scores, boxes, masks, override_args=override_eval_config)
 
+            annotated_img = cv2.cvtColor(annotated_img,cv2.COLOR_BGR2RGB)
+            img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
             img = np.hstack((annotated_img,img[:,:,:3]))
             name = img_path.replace(dataset.train_images,'').replace('PNGImages/','')
             filepath = save_inference_train + name
@@ -74,11 +82,13 @@ if __name__ == '__main__':
             frame, classes, scores, boxes, masks = yolact.infer(img_path)
             annotated_img = annotate_img(frame, classes, scores, boxes, masks, override_args=override_eval_config)
 
+            annotated_img = cv2.cvtColor(annotated_img,cv2.COLOR_BGR2RGB)
+            img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
             img = np.hstack((annotated_img,img[:,:,:3]))
             name = img_path.replace(dataset.valid_images,'').replace('PNGImages/','')
             filepath = save_inference_vals + name
             cv2.imwrite(filepath, img)
-        print(f"Wrote {len(train_images)+ len(val_images)} files.")
+        print(f"Wrote {len(train_images)+ len(val_images)} files into {save_inference_train.replace('train_inference/','')}")
 
     else:
         img = cv2.imread(image_name, cv2.IMREAD_UNCHANGED)[:,:,:]
@@ -86,6 +96,8 @@ if __name__ == '__main__':
         frame, classes, scores, boxes, masks = yolact.infer(image_name)
         annotated_img = annotate_img(frame, classes, scores, boxes, masks, override_args=override_eval_config)
 
+        annotated_img = cv2.cvtColor(annotated_img,cv2.COLOR_BGR2RGB)
+        img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
         img = np.hstack((annotated_img,img[:,:,:3]))
         cv2.namedWindow('Window name', cv2.WINDOW_NORMAL)
         cv2.imshow('Window name',img)
