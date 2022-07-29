@@ -39,10 +39,10 @@ config_override = {
     'top_k': 10,
     
     # Change these for different nets
-    'MEANS': (116.24457136111748,119.55194544312776,117.05760736644808,196.36951043344453),
+    'MEANS': (116.24457136111748,119.55194544312776,117.05760736644808,196.36951043344453), 
     'STD': (1.4380884974626822,1.8110670756137501,1.5662493838264602,1.8686978397590024),
     'augment_photometric_distort': False,
-    'backbone': resnet101_rgbd_backbone.copy({
+    'backbone': resnet101_rgbd_backbone.copy({  # change backbone for different models
         'selected_layers': list(range(1, 4)),
         'use_pixel_scales': True,
         'preapply_sqrt': False,
